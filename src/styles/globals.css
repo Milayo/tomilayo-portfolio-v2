@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-fira-code: "Fira Code", monospace;
+    --color-bg: #282c33;
+  }
+
+  html {
+    font-family: var(--font-fira-code);
+    background-color: var(--color-bg);
+    color: white;
+  }
+}
