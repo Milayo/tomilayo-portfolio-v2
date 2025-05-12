@@ -4,7 +4,7 @@ import { LuAlignCenterHorizontal } from "react-icons/lu";
 
 const HeroSection = () => {
   return (
-    <div className="flex justify-between my-12 px-35 tracking-wide">
+    <div className="flex justify-between my-25 px-35 tracking-wide">
       <div className="space-y-12 flex flex-col  justify-center">
         <h2 className="text-9xl font-bold text-center">
           Tomilayo is a <br />{" "}

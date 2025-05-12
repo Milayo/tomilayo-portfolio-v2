@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <HeroSection />
       <SkillsSection />
-      <SkillsSection />
+
       <AboutSection />
     </div>
   );
