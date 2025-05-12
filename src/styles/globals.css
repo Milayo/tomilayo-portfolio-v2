@@ -8,7 +8,7 @@
 
   html {
     font-family: var(--font-fira-code);
-    background-color: var(--color-bg);
+    background-color: black;
     color: white;
   }
 }
