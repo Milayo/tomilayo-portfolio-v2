@@ -15,8 +15,8 @@ const Header = () => {
         <Link href="/about">
           <span className="text-green-800">#</span>about
         </Link>
-        <Link href="/projects">
-          <span className="text-green-800">#</span>projects
+        <Link href="/work">
+          <span className="text-green-800">#</span>work
         </Link>
         <Link href="/contact">
           <span className="text-green-800">#</span>contact
