@@ -10,6 +10,7 @@
     font-family: var(--font-fira-code);
     background-color: black;
     color: white;
+    cursor: pointer;
   }
 }
 

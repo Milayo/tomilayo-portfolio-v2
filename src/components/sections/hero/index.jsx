@@ -1,38 +1,63 @@
-import Button from "@/constants/button";
-import Image from "next/image";
-import { LuAlignCenterHorizontal } from "react-icons/lu";
+"use client";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+
+// GSAP Hover Hook
+const useHoverEffect = (ref, baseColor = "#065f46", hoverColor = "#00ff90") => {
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const spans = ref.current.querySelectorAll("span");
+
+    spans.forEach((span) => {
+      // Color is already set inline, so we skip setting it here
+
+      const onEnter = () =>
+        gsap.to(span, { color: hoverColor, duration: 0.05, ease: "none" });
+
+      const onLeave = () =>
+        gsap.to(span, { color: baseColor, duration: 0.05, ease: "none" });
+
+      span.addEventListener("pointerenter", onEnter);
+      span.addEventListener("pointerleave", onLeave);
+
+      return () => {
+        span.removeEventListener("pointerenter", onEnter);
+        span.removeEventListener("pointerleave", onLeave);
+      };
+    });
+  }, [ref]);
+};
+
+// Text Splitter with Initial Style
+const splitText = (text, baseColor = "#065f46") =>
+  text.split("").map((char, idx) => (
+    <span
+      key={idx}
+      className="inline-block"
+      style={{ color: baseColor, transition: "none" }}
+    >
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
 
 const HeroSection = () => {
-  return (
-    <div className="flex justify-between my-25 px-35 tracking-wide">
-      <div className="space-y-12 flex flex-col  justify-center">
-        <h2 className="text-9xl font-bold text-center">
-          Tomilayo is a <br />{" "}
-          <span className="text-green-900">web designer</span>
-          <br /> and{" "}
-          <span className="text-green-900">front-end developer.</span>
-        </h2>
-        {/* <p className="font-medium text-[#ABB2BF]">
-          She crafts responsive websites where technologies
-          <br />
-          meet creativity.
-        </p>
-        <Button>Contact me!!</Button>{" "} */}
-      </div>
+  const designerRef = useRef(null);
+  const developerRef = useRef(null);
 
-      {/* <div className="relative">
-        <LuAlignCenterHorizontal
-          size={120}
-          className="absolute text-green-600 opacity-20 left-5 top-15 -z-10"
-        />
-        <Image src="/assets/Image.png" width={400} height={80} />{" "}
-        <div className="flex items-center justify-center gap-4 border border-green-600 p-3">
-          <div className="border border-green-600 p-3 w-1/12 bg-green-600"></div>
-          <p>
-            Currently working on <span className="font-bold">Portfolio</span>
-          </p>
-        </div>
-      </div> */}
+  useHoverEffect(designerRef);
+  useHoverEffect(developerRef);
+
+  return (
+    <div className="flex justify-center my-35 px-35">
+      <div className="text-center">
+        <h2 className="text-9xl font-bold">
+          Tomilayo is a <br />
+          <span ref={designerRef}>{splitText("web designer")}</span>
+          <br /> and{" "}
+          <span ref={developerRef}>{splitText("front-end developer.")}</span>
+        </h2>
+      </div>
     </div>
   );
 };
