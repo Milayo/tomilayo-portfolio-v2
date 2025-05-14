@@ -1,3 +1,4 @@
+import Footer from "@/components/layout/footer";
 import AboutSection from "@/components/sections/about";
 import BookMe from "@/components/sections/bookme";
 import HeroSection from "@/components/sections/hero";
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutSection />
       <BookMe />
       <WorkSection />
+      <Footer />
     </div>
   );
 }

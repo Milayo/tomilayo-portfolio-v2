@@ -3,7 +3,7 @@ import React from "react";
 
 const BookMe = () => {
   return (
-    <div className="flex justify-between mx-30 p-5 py-10 items-end text-green-600">
+    <div className="flex justify-between mx-30 p-5 py-10 items-end text-green-600 border-b-2 border-[#ABB2BF]">
       <div className="flex flex-col gap-2">
         <h3 className=" text-xl">
           I design clean modern <br /> websites that embody the <br /> essence

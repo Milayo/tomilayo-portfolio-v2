@@ -11,6 +11,9 @@
     background-color: black;
     color: white;
     cursor: pointer;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
   }
 }
 
