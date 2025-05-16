@@ -7,12 +7,11 @@ import WorkSection from "@/components/sections/work";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
       <HeroSection />
-      <SkillsSection />
-      <AboutSection />
-      <BookMe />
       <WorkSection />
+      <AboutSection />
+      <SkillsSection />
       <Footer />
     </div>
   );

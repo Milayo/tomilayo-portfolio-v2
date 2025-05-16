@@ -3,9 +3,9 @@ import React from "react";
 
 const BookMe = () => {
   return (
-    <div className="flex justify-between mx-30 p-5 py-10 items-end text-green-600 border-b-2 border-[#ABB2BF]">
-      <div className="flex flex-col gap-2">
-        <h3 className=" text-xl">
+    <div className="flex justify-between items-end text-green-600 text-lg">
+      <div className="flex flex-col gap-2 ">
+        <h3 className=" ">
           I design clean modern <br /> websites that embody the <br /> essence
           of your brand.
         </h3>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useLayoutEffect } from "react";
 import { skills, skills2 } from "@/lib/skills";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,8 +16,10 @@ const SkillsSection = () => {
   useGSAP(
     () => {
       if (scrollTrack1.current) {
+        const distance = -scrollTrack1.current.scrollWidth / 2;
+
         gsap.to(scrollTrack1.current, {
-          x: () => `-${scrollTrack1.current.scrollWidth / 2}`,
+          x: distance,
           ease: "none",
           scrollTrigger: {
             trigger: scrollTrack1.current,
@@ -29,13 +31,12 @@ const SkillsSection = () => {
       }
 
       if (scrollTrack2.current) {
-        // Set initial left offset so it starts off-screen
-        gsap.set(scrollTrack2.current, {
-          x: () => `-${scrollTrack2.current.scrollWidth / 2}`,
-        });
+        const distance = -scrollTrack2.current.scrollWidth / 2;
+
+        gsap.set(scrollTrack2.current, { x: distance });
 
         gsap.to(scrollTrack2.current, {
-          x: 0, // Move rightwards
+          x: 0,
           ease: "none",
           scrollTrigger: {
             trigger: scrollTrack2.current,
@@ -49,15 +50,14 @@ const SkillsSection = () => {
     { scope }
   );
 
-  const duplicateSkills = (list) => [...list, ...list];
-
   return (
-    <div className="overflow-hidden mt-20 mx-15" ref={scope}>
+    <div ref={scope} className="overflow-hidden mt-12 mx-15">
       <div
         ref={scrollTrack1}
+        style={{ willChange: "transform" }}
         className="border-y-2 border-[#ABB2BF] p-8 flex gap-x-5 w-max"
       >
-        {duplicateSkills(skills).map((skill, index) => (
+        {skills.map((skill, index) => (
           <div
             key={index}
             className="flex gap-x-2 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"
@@ -70,9 +70,10 @@ const SkillsSection = () => {
 
       <div
         ref={scrollTrack2}
+        style={{ willChange: "transform" }}
         className="border-b-2 border-[#ABB2BF] p-8 flex gap-x-5 w-max"
       >
-        {duplicateSkills(skills2).map((skill, index) => (
+        {skills2.map((skill, index) => (
           <div
             key={index}
             className="flex gap-x-2 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"

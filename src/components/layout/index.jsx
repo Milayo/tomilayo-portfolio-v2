@@ -8,7 +8,7 @@ const MainLayout = ({ children }) => {
     <div>
       <CustomCursor />
       <Header />
-      <ContactNav />
+
       <main>{children}</main>
     </div>
   );
