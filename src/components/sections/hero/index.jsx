@@ -84,7 +84,7 @@ const HeroSection = () => {
     <div className="relative h-screen w-full overflow-hidden">
       <video
         ref={videoRef}
-        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        className="absolute top-0 left-0 w-full h-full object-cover object-center z-0"
         autoPlay
         loop
         muted
@@ -100,7 +100,7 @@ const HeroSection = () => {
       />
 
       <div className="relative z-20 flex flex-col gap-y-4 items-center justify-center h-full text-white">
-        <h2 className="text-3xl">Tomilayo Ijarotimi</h2>
+        <h2 className="text-xl lg:text-3xl">Tomilayo Ijarotimi</h2>
         <p className="text-lg">Frontend Developer</p>
       </div>
     </div>

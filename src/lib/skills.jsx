@@ -64,6 +64,31 @@ export const skills = [
     Icon: SiGithub,
     name: "GitHub",
   },
+  {
+    Icon: SiGithub,
+    name: "GitHub",
+  },
+
+  {
+    Icon: SiNextdotjs,
+    name: "Next.js",
+  },
+  {
+    Icon: SiTailwindcss,
+    name: "Tailwind CSS",
+  },
+  {
+    Icon: SiFigma,
+    name: "Figma",
+  },
+  {
+    Icon: SiGit,
+    name: "Git",
+  },
+  {
+    Icon: SiGithub,
+    name: "GitHub",
+  },
 ];
 
 export const skills2 = [
@@ -94,6 +119,31 @@ export const skills2 = [
   {
     Icon: SiGit,
     name: "Git",
+  },
+  {
+    Icon: SiGithub,
+    name: "GitHub",
+  },
+
+  {
+    Icon: SiNextdotjs,
+    name: "Next.js",
+  },
+  {
+    Icon: SiTailwindcss,
+    name: "Tailwind CSS",
+  },
+  {
+    Icon: SiFigma,
+    name: "Figma",
+  },
+  {
+    Icon: SiGit,
+    name: "Git",
+  },
+  {
+    Icon: SiGithub,
+    name: "GitHub",
   },
   {
     Icon: SiGithub,

@@ -103,7 +103,7 @@ const WorkSection = () => {
   ];
 
   return (
-    <div id="work" className="px-15 relative">
+    <div id="work" className="px-5 lg:px-15 relative border border-red-700">
       <p className="text-base sm:text-lg text-green-900">#work</p>
 
       {projects.map((project, index) => (
@@ -123,7 +123,7 @@ const WorkSection = () => {
               alt={`Work ${index}`}
               width={1000}
               height={1500}
-              className="w-4/5 m-auto object-contain rounded-2xl shadow-lg"
+              className="lg:w-4/5 m-auto object-contain rounded-2xl shadow-lg"
             />
           </a>
         </div>
