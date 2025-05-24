@@ -8,6 +8,7 @@ import {
   SiGithub,
   SiNextdotjs,
 } from "react-icons/si";
+import { PiCirclesFourFill } from "react-icons/pi";
 
 export const skills = [
   {
@@ -71,10 +72,6 @@ export const skills2 = [
     name: "TypeScript",
   },
   {
-    Icon: SiTypescript,
-    name: "TypeScript",
-  },
-  {
     Icon: SiJavascript,
     name: "JavaScript",
   },
@@ -83,8 +80,8 @@ export const skills2 = [
     name: "React",
   },
   {
-    Icon: SiNextdotjs,
-    name: "Next.js",
+    Icon: PiCirclesFourFill,
+    name: "GSAP",
   },
   {
     Icon: SiTailwindcss,

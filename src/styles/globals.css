@@ -17,25 +17,27 @@
   }
 }
 
-.glitching {
-  animation: glitchSkew 0.3s infinite;
-  transform: skewX(2deg);
-}
-
-@keyframes glitchSkew {
+@keyframes float {
   0% {
-    transform: skewX(0deg);
-  }
-  25% {
-    transform: skewX(-2deg);
+    transform: translateY(0);
   }
   50% {
-    transform: skewX(2deg);
-  }
-  75% {
-    transform: skewX(-1deg);
+    transform: translateY(-15px);
   }
   100% {
-    transform: skewX(0deg);
+    transform: translateY(0);
   }
+}
+
+/* Utility classes */
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.delay-1s {
+  animation-delay: 1s;
+}
+
+.delay-2s {
+  animation-delay: 2s;
 }

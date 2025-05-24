@@ -60,7 +60,7 @@ const SkillsSection = () => {
         {skills.map((skill, index) => (
           <div
             key={index}
-            className="flex gap-x-2 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"
+            className="flex items-center gap-x-1.5 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"
           >
             <skill.Icon />
             {skill.name}
@@ -76,7 +76,7 @@ const SkillsSection = () => {
         {skills2.map((skill, index) => (
           <div
             key={index}
-            className="flex gap-x-2 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"
+            className="flex items-center gap-x-1.5 text-3xl text-[#ABB2BF] uppercase font-semibold transition-colors duration-300 hover:text-green-500 cursor-pointer"
           >
             <skill.Icon />
             {skill.name}

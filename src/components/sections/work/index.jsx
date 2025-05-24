@@ -95,11 +95,15 @@ const WorkSection = () => {
   const projects = [
     { img: "/assets/veriface.png", link: "/" },
     { img: "/assets/seer.png", link: "/" },
+    {
+      img: "/assets/creatipp.png",
+      link: "/",
+    },
     { img: "/assets/podcast.png", link: "https://my-podcast-one.vercel.app/" },
   ];
 
   return (
-    <div className="px-15 relative">
+    <div id="work" className="px-15 relative">
       <p className="text-base sm:text-lg text-green-900">#work</p>
 
       {projects.map((project, index) => (

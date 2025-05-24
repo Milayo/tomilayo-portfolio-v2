@@ -1,10 +1,26 @@
 "use client";
 import Image from "next/image";
-import useScrambleTextCursorEffect from "@/lib/scrambletextonhover";
 
 const AboutSection = () => {
+  const workExperience = [
+    {
+      title: "Software Developer",
+      company: "Bitrefill",
+      duration: "2022 - 2023",
+    },
+    {
+      title: "Frontend Developer",
+      company: "Tech Solutions",
+      duration: "2021 - 2022",
+    },
+    {
+      title: "Web3 Frontend Developer",
+      company: "WomenBuildWeb3",
+      duration: "2020 - 2021",
+    },
+  ];
   return (
-    <div className="px-15 pt-16 space-y-8">
+    <div id="about" className="px-15 pt-16 space-y-8">
       <p className="text-base sm:text-lg text-green-900">#about</p>
 
       <h3 className="text-3xl font-semibold">
@@ -12,15 +28,16 @@ const AboutSection = () => {
         <span className="text-green-600">:</span>
       </h3>
 
-      <div className="text-lg text-[#ABB2BF] mt-5">
-        From a young age, I've been fascinated by the world of computers and
-        software. Features like copy, paste, and undo seemed magical and touch
-        screens were a joy to use. Along the way, I've developed a keen interest
-        in visual design, and found my calling to digital Product Design. I am a
-        UI/UX designer with a passion for creating user-friendly and visually
-        appealing digital experiences. My goal is to design interfaces that are
-        not only aesthetically pleasing but also intuitive and easy to navigate.
+      <div className="text-base sm:text-lg text-[#ABB2BF] mt-5">
+        I’m a frontend developer passionate about creating visually engaging and
+        highly interactive web experiences. My journey began with JavaScript,
+        and quickly evolved into a broader obsession with clean design, smooth
+        animations, and responsive interfaces. Over time, I’ve explored modern
+        frontend tools and frameworks like React and Next.js, and extended my
+        skills into the decentralized web, building seamless user interfaces for
+        Web3 applications.
       </div>
+
       <div className="h-auto w-1/2 m-auto">
         <Image
           src="/assets/about.png"
@@ -30,35 +47,26 @@ const AboutSection = () => {
           className="w-full object-contain"
         />
       </div>
+
       <div>
         <h3 className="text-3xl font-semibold mt-12">
           I've <i>worked</i> across different domains
           <span className="text-green-600">:</span>
         </h3>
+
         <div className="space-y-8 mt-8 text-[#ABB2BF] text-lg">
-          <div className="flex justify-between">
-            <div className="flex flex-col">
-              <h2 className="text-green-600">Software Developer</h2>{" "}
-              <span>@ Bitrefill</span>
+          {workExperience.map((experience, index) => (
+            <div className="flex justify-between" key={index}>
+              <div className="flex flex-col">
+                <h2 className="text-green-600">{experience.title}</h2>
+                <span>@ {experience.company}</span>
+              </div>
+              <div>{experience.duration}</div>
             </div>
-            <div>2022 - 2023</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="flex flex-col">
-              <h2 className="text-green-600">Software Developer</h2>{" "}
-              <span>@ Bitrefill</span>
-            </div>
-            <div>2022 - 2023</div>
-          </div>
-          <div className="flex justify-between">
-            <div className="flex flex-col">
-              <h2 className="text-green-600">Software Developer</h2>{" "}
-              <span>@ Bitrefill</span>
-            </div>
-            <div>2022 - 2023</div>
-          </div>
+          ))}
         </div>
       </div>
+
       <div>
         <h3 className="text-3xl font-semibold mt-20">
           and <i>acquired</i> different skills
