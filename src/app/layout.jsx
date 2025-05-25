@@ -9,7 +9,7 @@ const firaCode = Fira_Code({
 
 export const metadata = {
   title: "Tomilayo's Portfolio",
-  description: "Personal portfolio built with Next.js and Tailwind CSS",
+  description: "Tomilayo's Personal Portfolio",
 };
 
 export default function RootLayout({ children }) {
