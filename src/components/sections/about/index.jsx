@@ -32,13 +32,13 @@ const AboutSection = () => {
         I’m a frontend developer passionate about creating visually engaging and
         highly interactive web experiences. My journey began with JavaScript,
         and quickly evolved into a broader obsession with clean design, smooth
-        animations, and responsive interfaces. Over time, I’ve explored modern
-        frontend tools and frameworks like React and Next.js, and extended my
-        skills into the decentralized web, building seamless user interfaces for
-        Web3 applications.
+        animations, and responsive interfaces. <br /> <br /> Over time, I’ve
+        explored modern frontend tools and frameworks like React and Next.js,
+        and extended my skills into the decentralized web, building seamless
+        user interfaces for Web3 applications.
       </div>
 
-      <div className="h-auto w-1/2 m-auto">
+      <div className="h-auto w-3/4 lg:w-1/2 m-auto">
         <Image
           src="/assets/about.png"
           alt="about"

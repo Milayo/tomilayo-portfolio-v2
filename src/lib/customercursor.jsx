@@ -1,21 +1,29 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const mouse = useRef({ x: 0, y: 0 });
   const position = useRef({ x: 0, y: 0 });
   const rafId = useRef(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   useEffect(() => {
+    // Detect touch device
+    const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    setIsTouchDevice(hasTouch);
+  }, []);
+
+  useEffect(() => {
+    if (isTouchDevice) return;
+
     const handleMouseMove = (e) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
     };
 
     const animate = () => {
-      // Lerp factor — higher means more delayed/following
       const speed = 0.15;
       position.current.x += (mouse.current.x - position.current.x) * speed;
       position.current.y += (mouse.current.y - position.current.y) * speed;
@@ -34,7 +42,9 @@ const CustomCursor = () => {
       document.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  }, [isTouchDevice]);
+
+  if (isTouchDevice) return null;
 
   return (
     <div

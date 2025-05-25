@@ -14,13 +14,13 @@ const Footer = () => {
       <div className="flex gap-4 items-center justify-center">
         <a href="https://github.com/Milayo " target="_blank">
           <AiFillGithub
-            size={35}
+            size={30}
             className="text-[#ABB2BF] hover:text-green-500 float "
           />
         </a>
         <a href="mailto:moladeijarotimi@gmail.com" target="_blank">
           <IoIosMail
-            size={35}
+            size={30}
             className="text-[#ABB2BF] hover:text-green-500 float delay-1s"
           />
         </a>
@@ -29,13 +29,13 @@ const Footer = () => {
           target="_blank"
         >
           <AiFillLinkedin
-            size={35}
+            size={30}
             className="text-[#ABB2BF] hover:text-green-500 float"
           />
         </a>
         <a href="https://x.com/Mitoraji_tee" target="_blank">
           <AiFillTwitterCircle
-            size={35}
+            size={30}
             className="text-[#ABB2BF] hover:text-green-500 float delay-2s"
           />
         </a>

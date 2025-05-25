@@ -93,12 +93,8 @@ export const skills = [
 
 export const skills2 = [
   {
-    Icon: SiTypescript,
-    name: "TypeScript",
-  },
-  {
-    Icon: SiJavascript,
-    name: "JavaScript",
+    Icon: SiNextdotjs,
+    name: "Next.js",
   },
   {
     Icon: FaReact,

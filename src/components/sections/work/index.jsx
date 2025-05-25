@@ -83,34 +83,68 @@
 // export default WorkSection;
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import Link from "next/link";
 
-gsap.registerPlugin(ScrollTrigger);
+// const WorkSection = () => {
+//   const projects = [
+//     { img: "/assets/veriface.png", link: "/" },
+//     { img: "/assets/seer.png", link: "/" },
+//     {
+//       img: "/assets/creatipp.png",
+//       link: "/",
+//     },
+//     { img: "/assets/podcast.png", link: "https://my-podcast-one.vercel.app/" },
+//   ];
+
+//   return (
+//     <div id="work" className="px-5 lg:px-15 relative ">
+//       <p className="text-base sm:text-lg text-green-900">#work</p>
+
+//       {projects.map((project, index) => (
+//         <div
+//           key={index}
+//           className={`project-panel-${index} sticky h-[100vh] top-0 inset-0 flex items-center justify-center`}
+//           style={{ top: `0.5rem`, zIndex: index + 1 }}
+//         >
+//           <a
+//             href={project.link}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             className="w-full h-full flex"
+//           >
+//             <Image
+//               src={project.img}
+//               alt={`Work ${index}`}
+//               width={1000}
+//               height={1500}
+//               className="w-4/5 m-auto object-contain rounded-2xl shadow-lg"
+//             />
+//           </a>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
 const WorkSection = () => {
   const projects = [
     { img: "/assets/veriface.png", link: "/" },
     { img: "/assets/seer.png", link: "/" },
-    {
-      img: "/assets/creatipp.png",
-      link: "/",
-    },
+    { img: "/assets/creatipp.png", link: "/" },
     { img: "/assets/podcast.png", link: "https://my-podcast-one.vercel.app/" },
   ];
 
   return (
-    <div id="work" className="px-5 lg:px-15 relative border border-red-700">
-      <p className="text-base sm:text-lg text-green-900">#work</p>
+    <div id="work" className="relative lg:px-15 px-5">
+      <p className="text-base sm:text-lg text-green-900 sticky top-0 z-50 py-2">
+        #work
+      </p>
 
       {projects.map((project, index) => (
         <div
           key={index}
-          className={`project-panel-${index} sticky h-[100vh] top-0 inset-0 flex items-center justify-center`}
-          style={{ top: `0.5rem`, zIndex: index + 1 }}
+          className="sticky top-0 h-[40vh] lg:h-screen"
+          style={{ zIndex: projects.length + index }}
         >
           <a
             href={project.link}
@@ -123,7 +157,7 @@ const WorkSection = () => {
               alt={`Work ${index}`}
               width={1000}
               height={1500}
-              className="lg:w-4/5 m-auto object-contain rounded-2xl shadow-lg"
+              className="w-full lg:w-6xl m-auto object-contain rounded-2xl shadow-lg"
             />
           </a>
         </div>

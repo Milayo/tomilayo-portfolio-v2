@@ -17,6 +17,7 @@ const HeroSection = () => {
       };
       window.addEventListener("wheel", preventScroll, { passive: false });
       window.addEventListener("touchmove", preventScroll, { passive: false });
+
       return () => {
         window.removeEventListener("wheel", preventScroll);
         window.removeEventListener("touchmove", preventScroll);
@@ -26,14 +27,9 @@ const HeroSection = () => {
 
   // Handle scroll attempt: fade overlay in on first scroll down
   useEffect(() => {
-    const onScroll = (e) => {
+    const handleFirstScroll = () => {
       if (canScroll) return;
 
-      // Only respond to scroll down (wheelDelta or deltaY > 0)
-      const delta = e.deltaY || -e.wheelDelta || e.detail;
-      if (delta <= 0) return; // Ignore scroll up here
-
-      // Animate overlay opacity from 0 to 1
       gsap.to(overlayRef.current, {
         duration: 1.5,
         opacity: 1,
@@ -41,35 +37,56 @@ const HeroSection = () => {
           setCanScroll(true);
           window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
 
-          // Pause the video while scrolling past hero section
           if (videoRef.current) {
             videoRef.current.pause();
           }
         },
       });
 
-      window.removeEventListener("wheel", onScroll);
-      window.removeEventListener("touchmove", onScroll);
+      window.removeEventListener("wheel", onWheelScroll);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
     };
 
-    window.addEventListener("wheel", onScroll, { passive: false });
-    window.addEventListener("touchmove", onScroll, { passive: false });
+    const onWheelScroll = (e) => {
+      const delta = e.deltaY || -e.wheelDelta || e.detail;
+      if (delta > 0) {
+        handleFirstScroll();
+      }
+    };
+
+    let touchStartY = 0;
+    const onTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e) => {
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      if (deltaY > 20) {
+        handleFirstScroll();
+      }
+    };
+
+    window.addEventListener("wheel", onWheelScroll, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
 
     return () => {
-      window.removeEventListener("wheel", onScroll);
-      window.removeEventListener("touchmove", onScroll);
+      window.removeEventListener("wheel", onWheelScroll);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
     };
   }, [canScroll]);
 
-  // Listen for scroll to detect when user scrolls back up into hero
+  // Detect scroll back to top and resume video
   useEffect(() => {
     const onWindowScroll = () => {
       if (window.scrollY === 0 && canScroll) {
-        // Reset scroll lock and overlay opacity
         setCanScroll(false);
         gsap.to(overlayRef.current, { duration: 0.5, opacity: 0.85 });
 
-        // Play the video again
         if (videoRef.current) {
           videoRef.current.play().catch(() => {});
         }
@@ -92,7 +109,6 @@ const HeroSection = () => {
         src="https://videos.pexels.com/video-files/9694443/9694443-hd_1920_1080_25fps.mp4"
       />
 
-      {/* Overlay starts fully transparent */}
       <div
         ref={overlayRef}
         className="absolute inset-0 bg-black z-10"
