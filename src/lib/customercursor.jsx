@@ -7,16 +7,34 @@ const CustomCursor = () => {
   const mouse = useRef({ x: 0, y: 0 });
   const position = useRef({ x: 0, y: 0 });
   const rafId = useRef(null);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const [shouldHide, setShouldHide] = useState(true); // Default to true
 
   useEffect(() => {
-    // Detect touch device
-    const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-    setIsTouchDevice(hasTouch);
+    const isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    const isLoading = document.body.classList.contains("loading");
+
+    // Hide on mobile or while loading
+    setShouldHide(isMobile || isLoading);
+
+    // When loading ends, re-check and possibly show
+    const observer = new MutationObserver(() => {
+      const loading = document.body.classList.contains("loading");
+      if (!loading && !isMobile) {
+        setShouldHide(false);
+        observer.disconnect(); // Stop watching
+      }
+    });
+
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (isTouchDevice) return;
+    if (shouldHide) return;
 
     const handleMouseMove = (e) => {
       mouse.current.x = e.clientX;
@@ -42,14 +60,14 @@ const CustomCursor = () => {
       document.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(rafId.current);
     };
-  }, [isTouchDevice]);
+  }, [shouldHide]);
 
-  if (isTouchDevice) return null;
+  if (shouldHide) return null;
 
   return (
     <div
       ref={cursorRef}
-      className="pointer-events-none fixed top-0 left-0 z-[9999] h-4 w-4 rounded-full bg-green-500 mix-blend-difference"
+      className="custom-cursor pointer-events-none fixed top-0 left-0 z-[9999] h-4 w-4 rounded-full bg-green-500 mix-blend-difference"
     />
   );
 };
